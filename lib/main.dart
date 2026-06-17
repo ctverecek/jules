@@ -219,16 +219,17 @@ class _SnakeGameState extends State<SnakeGame> {
                           cellColor = Colors.black;
                         } else if (isSnake) {
                           cellColor = const Color(0xFF34D399); // Darker Green
-                        } else if (isFood) {
-                          cellColor = const Color(0xFFF87171); // Red
                         }
 
                         return Container(
                           margin: const EdgeInsets.all(1),
                           decoration: BoxDecoration(
                             color: cellColor,
-                            border: (isSnake || isFood) ? Border.all(color: Colors.black, width: 2) : null,
+                            border: isSnake ? Border.all(color: Colors.black, width: 2) : null,
                           ),
+                          child: isFood
+                              ? const Icon(Icons.star, color: Color(0xFFF87171), size: 16)
+                              : null,
                         );
                       },
                     ),
